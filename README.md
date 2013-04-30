@@ -5,7 +5,7 @@ This is mostly for [my](http://github.com/gdso) personal use, someday I will mer
 elaborate Vagrant setup.
  
 Installs:
-  - erlang (R15B02)
+  - erlang (R15B01)
   - rebar (2.0.0)
 
 Behind the covers, lazy-erlang uses [ansible](http://ansible.cc) for deployment, 
