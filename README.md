@@ -1,13 +1,15 @@
 LAZY-ERLANG
 ===========
- [Ansible](http://ansible.cc) scripts that help you setup up an erlang dev environment (on UNIX-like OS).
- This is mostly for [my](http://github.com/gdso) personal use, someday I will merge this into a Vagrant setup.
-
+[Ansible](http://ansible.cc) scripts that help you setup up an erlang dev environment on a guest OS, e.g. a linux VM.
+This is mostly for [my](http://github.com/gdso) personal use, someday I will merge this into a more 
+elaborate Vagrant setup.
+ 
 Installs:
   - erlang (R15B02)
   - rebar (2.0.0)
 
-Behind the covers, lazy-erlang uses ansible for deployment, kerl for managing the erlang installation
+Behind the covers, lazy-erlang uses [ansible](http://ansible.cc) for deployment, 
+[kerl](https://github.com/spawngrid/kerl) for managing erlang installation.
 
 # Installation
 
