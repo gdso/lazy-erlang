@@ -24,14 +24,26 @@ Behind the covers, lazy-erlang uses [ansible](http://ansible.cc) for deployment,
   - python (comes pre-installed on most linux installs)
   - password-less sudo
 
-## Instructions
+## Installation Instructions
 bootstrap.sh installs the rest of the dependencies local to the repo itself:
 
     git clone git://github.com/gdso/lazy-erlang.git
     cd lazy-erlang
     ./bootstrap
     
+# HOWTO Use the Playbook
 
+1. Edit the guest-host.ini, replace the host on line 3 with your guest hostname:
+ 
+        guest0 ansible_ssh_host=[hostname]
+        
+2. Then setup a temporary ansible environment:
+
+        ./setup-temp-ansible-env.sh
+
+3. Then run install:
+    
+        ansible-playbook install.yml
     
 
   
