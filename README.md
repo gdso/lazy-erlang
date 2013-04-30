@@ -31,7 +31,7 @@ bootstrap.sh installs the rest of the dependencies local to the repo itself:
     cd lazy-erlang
     ./bootstrap
     
-# HOWTO Use the Playbook
+# HOWTO use the Playbook
 
 1. Edit the guest-host.ini, replace the host on line 3 with your guest hostname:
  
