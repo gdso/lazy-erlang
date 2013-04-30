@@ -1,6 +1,6 @@
 LAZY-ERLANG
 ===========
-*lazy-erlang* is an [Ansible](http://ansible.cc) playbook that will help you, a lazy developer, 
+*lazy-erlang* is an [ansible](http://ansible.cc) playbook that will help you, a lazy developer, 
 setup up an erlang dev environment on a guest OS, e.g. a linux VM.
 This is mostly for [my](http://github.com/gdso) personal use, someday I will merge this into a more 
 elaborate Vagrant setup.
