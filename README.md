@@ -44,6 +44,10 @@ bootstrap.sh installs the rest of the dependencies local to the repo itself:
 3. Then run install:
     
         ansible-playbook install.yml
+
+   Or, if you haven't setup password-less sudo on remote host:
+        
+        ansible-playbook install.yml -K
     
 
   
