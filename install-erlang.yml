@@ -1,0 +1,62 @@
+- name: ensure erlang deps are installed
+  hosts: guests
+  sudo: yes
+  gather_facts: no
+  tasks:
+  - name: ensure erlang deps are installed
+    tags: ensure_erl_deps
+    apt: pkg=$item state=installed
+    with_items:
+        - build-essential
+        - libncurses5-dev
+        - openssl
+        - libssl-dev
+        - git
+
+- name: build and deploy erlang
+  hosts: guests
+  gather_facts: no
+  sudo: no
+  vars:
+    kerl_dir: ${cellar_dir}kerl/
+    kerl: ${kerl_dir}kerl
+    erl_otp_release: R15B01
+    erl_otp_build_name: r15b01
+    erl_otp_bin: ${erl_dir}bin
+  tasks:
+  - name: ensure kerl dir exists
+    tags: ensure_kerl
+    file: path=${kerl_dir} state=directory
+
+  - name: download kerl
+    get_url: url=https://raw.github.com/spawngrid/kerl/master/kerl dest=${kerl}
+
+  - name: chmod kerl for execution
+    file: path=${kerl} state=file mode=755
+
+  #- name: update kerl's list of erlang/otp releases
+  #  shell: $kerl update releases
+
+  - name: capture what kerl has already built $erl_otp_build_name
+    shell: $kerl list builds
+    register: kerl_otp_builds
+
+  - debug: msg=${kerl_otp_builds.stdout}
+
+  - name: build erlang/otp
+    shell: $kerl build $erl_otp_release $erl_otp_build_name
+    # build erlang/otp only if kerl hasn't already built it
+    only_if: "'${kerl_otp_builds.stdout}'.find('${erl_otp_release}') == -1"
+
+
+  - name: ensure ${erl_dir} exists
+    file: path=${erl_dir} state=directory
+
+  - name: capture what kerl has previously installed
+    shell: $kerl list installations
+    register: kerl_otp_installations
+
+  - name: install erlang/otp
+    shell: $kerl install $erl_otp_build_name ${erl_dir}
+    # install erlang/otp only if kerl hasn't already built it
+    only_if: "'${kerl_otp_installations.stdout}'.find('${erl_otp_build_name}') == -1"

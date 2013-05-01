@@ -1,0 +1,25 @@
+---
+- name: clone rebar
+  user: gdso
+  hosts: guests
+  gather_facts: no
+  tasks:
+  - name: ensure cellar/src dir exists
+    tags: ensure_cellar_src
+    file: path=${cellar_dir}/src state=directory
+
+  - name: ensure rebar_bin exists
+    tags: ensure_rebar_bin_exists
+    file: path=${rebar_bin} state=directory
+
+  - name: clone rebar
+    tags: clone_rebar
+    git: repo=git://github.com/rebar/rebar.git dest=${cellar_dir}/src/rebar version=2.0.0
+
+  - name: bootstrap rebar
+    tags: bootstrap_rebar
+    shell: command ${cellar_dir}src/rebar/bootstrap chdir=${cellar_dir}src/rebar/ executable
+
+  - name: copy rebar to cellar bin
+    tags: copy_rebar_to_bin
+    shell: cp ${cellar_dir}/src/rebar/rebar ${rebar_bin}
