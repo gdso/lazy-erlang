@@ -2,8 +2,9 @@
 - include: install-erlang.yml 
 - include: install-rebar.yml
 
-- name: add erlang and rebar to path
-  tags: add_erl_rebar_path
+- name: append to the $PATH
   hosts: guests
   tasks:
-    - template: src=templates/bashrc dest=~/.bashrc mode=666 backup=yes
+    - name: add erlang and rebar to path 
+      tags: add_erl_rebar_path
+      template: src=templates/bashrc dest=~/.bashrc mode=666 backup=yes
