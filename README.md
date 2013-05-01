@@ -14,7 +14,7 @@ Behind the covers, lazy-erlang uses [ansible](http://ansible.cc) for deployment,
 
 # Installation
 
-## Pre-requisites on host operating system (OS):
+## Pre-requisites on host OS:
   - bash (bootstrap.sh is a shell script)
   - python
   - python's virtualenv
