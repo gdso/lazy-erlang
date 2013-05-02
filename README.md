@@ -2,12 +2,17 @@ LAZY-ERLANG
 ===========
 *lazy-erlang* is an [ansible](http://ansible.cc) playbook that will help you, a lazy developer, 
 setup up an erlang dev environment on a guest OS, e.g. a linux VM.
-This is mostly for [my](http://github.com/gdso) personal use, someday I will merge this into a more 
+
+I won't lie, lazy-erlang is mostly for [my](http://github.com/gdso) personal use, someday I will merge this into a more 
 elaborate Vagrant setup.
  
 Installs:
   - erlang (R15B01)
   - rebar (2.0.0)
+
+Bad Things&trade; *lazy-erlang* does to your guest OS:
+  - blows away your .bashrc file (ansible should be backing it up) to update your $PATH
+  - copies/compiles/installs erlang and rebar in ~/cellar/
 
 Behind the covers, lazy-erlang uses [ansible](http://ansible.cc) for deployment, 
 [kerl](https://github.com/spawngrid/kerl) for managing erlang installation.
