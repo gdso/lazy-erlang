@@ -14,7 +14,7 @@ Bad Things&trade; *lazy-erlang* does to your guest OS:
   - blows away your .bashrc file (ansible should be backing it up) to update your $PATH
   - copies/compiles/installs erlang and rebar in ~/cellar/
 
-Behind the covers, lazy-erlang uses [ansible](http://ansible.cc) for deployment, 
+Underneath the covers, lazy-erlang uses [ansible](http://ansible.cc) for deployment, 
 [kerl](https://github.com/spawngrid/kerl) for managing erlang installation.
 
 # Installation
